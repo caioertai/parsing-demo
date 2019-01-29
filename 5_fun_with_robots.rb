@@ -2,35 +2,6 @@ require 'json'
 require 'open-uri'
 
 base_url = 'https://api.github.com/users/'
-usernames = %w[user1 user2 user3]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 usernames = %w[
   aklor
   camcam06

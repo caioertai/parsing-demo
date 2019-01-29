@@ -2,24 +2,13 @@ require 'json'
 require 'open-uri'
 
 # TODO: Let's fetch name and bio from a given GitHub username
-url = 'https://api.github.com/users/ssaunier'
+puts "From which user do you want info?"
+username = gets.chomp
+
+url = 'https://api.github.com/users/' + username
 
 # TODO: Print user info
+user_string = open(url).read
+user = JSON.parse(user_string)
 
-
-
-
-students = %w[
-  aklor
-  camcam06
-  ChristopheNonato
-  eduardoin
-  Floriane
-  gugaweigert
-  leovsferreira
-  lucaslealm
-  lucasvonlachmann
-  marcusmaione
-  marinaalbuquerque
-  svetamedved
-]
+puts "#{user['name']} has #{user['public_repos']} public repositories"

@@ -1,18 +1,19 @@
 require 'csv'
-filepath = 'data/beers.csv'
+# filepath = 'data/beers.csv'
+# csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 
-# =============== Reading CSV ===================
+# ============== Reading (Parsing) CSV =================
 # TODO: Let's p each CSV line
-
 # TODO: List beer names
 
-# TODO: Deal with the headers manually
+CSV.foreach(filepath, csv_options) do |beer|
+  puts "#{beer['Name']} is a #{beer['Appearance']} beer, from #{beer['Origin']}"
+end
 
-# TODO: Deal with headers using options
 
-# TODO: List beer origins
 
-# ============== Loading CSV ====================
+# ============= Loading (Storing) CSV ==================
+
 characters = [
   { name: 'Hank',   class: 'Ranger',    age: 15 },
   { name: 'Eric',   class: 'Knight',    age: 15 },
@@ -21,8 +22,14 @@ characters = [
   { name: 'Sheila', class: 'Thief',     age: 13 }
 ]
 
-# TODO: Let's create a DnD Characters file
+new_filepath = 'data/dnd_characters.csv'
+csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
 
-# TODO: Let's create a file with actual info now!!
+CSV.open(new_filepath, 'wb', csv_options) do |csv|
+  # csv << characters[0].keys
+  csv << ["name", "class", "age"]
 
-# TODO: Let's iteratively load info on the file
+  characters.each do |character|
+    csv << [character[:name], character[:class], character[:age]]
+  end
+end
