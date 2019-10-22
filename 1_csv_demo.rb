@@ -1,4 +1,3 @@
-require "csv"
 # ============== Reading (Parsing) CSV =================
 # TODO: Let's inspect each CSV line
 # TODO: List beer names
